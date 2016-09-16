@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Pre-commit hook to test stack projects against -WError
+#
+# To enable this hook, name the script pre-commit or softlink, etc.
+
+if [[ -x $(command -v stack) ]]
+then
+    stack build --pedantic
+else
+    echo "stack is not installed! Remove the pre-commit hook or install stack."
+    exit 1
+fi
